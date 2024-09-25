@@ -1,6 +1,7 @@
 ## INTERACTIVE PLOT:
 
-# blurb about private vs public forest visualisation
+# While the previous basic plot was initially taken from a Data Science Project completed during my Master's studies, the following code demonstrates a more recent attempt at configuring
+# and advancing upon my previous abilities with data management and visualisation.
 
 rm(list=setdiff(ls(), c("processed_extracted_data", "woodland_by_year"))) # removes unnecessary variables to clean environment
 
