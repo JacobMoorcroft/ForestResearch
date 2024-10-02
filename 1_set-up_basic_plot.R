@@ -6,7 +6,7 @@
 # correlates with change taken from other related data gathered by the same organisations. Visualisations do not utilise statistical analyses as the purpose of this code is to
 # simply explore different ways in which data can be visualised to provoke interest.
 
-## The initial code (13-148) has been designed to extract data on the total provisional woodland area within each country within the United Kingdom (UK) from 1998-2024, calculate
+## The initial code below has been designed to extract data on the total provisional woodland area within each country within the United Kingdom (UK) from 1998-2024, calculate
 ## the percentage increase for each country across this time period, then visualise the growth of woodland area in the UK from 1998-2024 both in terms of absolute value numeric, 
 ## and statistically proportional changes. This facilitates more appropriate comparisons of woodland development in the UK than simple change from absolute value amounts in 1998.
 
@@ -123,7 +123,7 @@ BasicPlot<-woodland_growth_over_time %>%
   scale_x_continuous(breaks=seq(1998,2024,5))+
   scale_y_continuous(breaks=seq(0,1500,150))+
   theme(panel.border=element_rect(colour="#8B7355",fill=NA,linewidth=2),
-        panel.grid.minor=element_line(colour="#CAFF70",linewidth=0.5),
+        panel.grid.minor=element_line(colour="#8B7355",linewidth=0.5),
         panel.grid.major=element_line(colour="#CAFF70",linewidth=0.7),
         panel.background=element_rect(fill="#FFFFF0"),
         axis.line=element_line(linewidth=2,colour="#8B7355"),
@@ -135,7 +135,7 @@ BasicPlot<-woodland_growth_over_time %>%
         legend.box.margin=margin(1,1,1,1),
         legend.key=element_rect(colour="#8B7355"))
 
-# Adds the official logo to sit alongside the data source
+# To demonstrate the ability to do so, this code adds the official logo to sit alongside the data source
 
 BasicPlot<-ggdraw(BasicPlot)+
   draw_image(logo_file, scale=.2,x=1,hjust=1,halign=1,valign=0)
