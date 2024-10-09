@@ -123,6 +123,7 @@ filename<-paste("The Growth of Coniferous & Deciduous (Broadleaf) Private Woodla
 full_file_path<-file.path(fig_path,filename)
 saveWidget(InteractivePlot_private, file=full_file_path)
 
+
 # Generally, these visualisations tend to indicate that private woodland area has grown at a much more visually noticeable rate than public woodland, even
 # after accounting for the differences in initial proportions by creating graphs with relative scales. This could be curious for motivating investigations
 # into WHY this is happening (i.e. privatisation of forested areas for production purposes, higher funding for development, etc.) or even whether this 
@@ -130,6 +131,7 @@ saveWidget(InteractivePlot_private, file=full_file_path)
 
 # And just as a final tidbit, there is a simple barplot below which shows all of the data which combines the private and public woodland statistics to show
 # a more general trend on the total amount of woodland area as denoted by whether it was coniferous or deciduous, per country, per year from 1998-2024.
+
 
 # DATA MANIPULATION: Woodland Tree Types on both PUBLIC and PRIVATE land ...
 
@@ -146,5 +148,19 @@ head(total_trees) # have a look! :)
 
 # Trend in RECORDED woodland area (i.e. as 1998-2004 NI woodland area was not documented) in the United Kingdom from 1998-2024.
 
-p<-ggplot(total_trees, aes(x=year,y=total_woodland,fill=sources))+geom_bar(position="stack",stat="identity")
-p
+amalgamated_visualisation<-total_trees %>%
+  hchart('column', hcaes(x=year,y=total_woodland,group=sources),stacking="normal")%>%
+  hc_title(text="Recorded Total Woodland Area of the United Kingdom from 1998-2024")%>%
+  hc_subtitle(text="Segmented by tree type (coniferous or deciduous) and country")%>%
+  hc_xAxis(title=list(text="Year (commencing from March 31st)"))%>%
+  hc_yAxis(title=list(text="Woodland area (in thousand hectares)"))%>%
+  hc_caption(text="Northern Ireland only began documenting woodland area as of 2005: see abline")%>%
+  hc_annotations(list(shapes=list(list(type = 'path',points = list(list(xAxis = 0, yAxis = 0, x = 2004.5, y = 0),
+                                                                   list(xAxis = 0, yAxis = 0, x = 2004.5, y = 3500)),
+                                       stroke="black",strokeWidth=1)),draggable=""))
+
+amalgamated_visualisation
+
+filename<-paste("Recorded Total Woodland Area of the United Kingdom from 1998-2024.html",sep="")
+full_file_path<-file.path(fig_path,filename)
+saveWidget(amalgamated_visualisation, file=full_file_path)
