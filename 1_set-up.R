@@ -1,5 +1,5 @@
-## Should packages need to be installed, remove '#' and run:
-#libraries<-c("tidyverse", "cowplot", "magick", "readODS", "here", "plotly", "htmlwidgets")
+## Should the below list of packages need to be installed, remove '#'(s) and run:
+#libraries<-c("tidyverse", "cowplot", "magick", "readODS", "here", "plotly", "highcharter", "htmlwidgets")
 #install.packages(libraries, repos="http://cran.rstudio.com")
 
 ## NECESSARY PACKAGES:
@@ -9,7 +9,8 @@ library(readODS)      # to retrieve data from ODS files
 library(tidyverse)    # for various visualisation packages
 library(cowplot)      # for various visualisation options
 library(magick)       # to import images onto visualisations
-library(plotly)       # to create interactive visualisations
+library(plotly)       # to create interactive scatterplots
+library(highcharter)  # to create interactive barplots
 library(htmlwidgets)  # to save interactive visualisations
 
 ## DATA PREPARATION:
@@ -44,7 +45,7 @@ rownames(processed_extracted_data) <- NULL # corrects for the erroneous row numb
 # Glimpse of the processed data
 processed_extracted_data
 
-# Mutual code for all visualisations
+# Mutual code for future visualisations
 fig_path<-here("figs") # creates the necessary path for saving the figures
 logo_file<-paste0(here("logo","Picture1.jpg")) # creates the path for applying the logo
 year_ending_March_31st<-processed_extracted_data$`Year ending 31 March` # timeframe for visualisations
