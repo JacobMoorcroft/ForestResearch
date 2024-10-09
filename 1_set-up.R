@@ -1,5 +1,5 @@
 ## Should packages need to be installed, remove '#' and run:
-#libraries<-c("tidyverse", "cowplot", "magick", "readODS", "here")
+#libraries<-c("tidyverse", "cowplot", "magick", "readODS", "here", "plotly", "htmlwidgets")
 #install.packages(libraries, repos="http://cran.rstudio.com")
 
 ## NECESSARY PACKAGES:
