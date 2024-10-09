@@ -3,7 +3,7 @@
 # general composition of woodland development from 1998-2024, it could be curious to investigate how this could differ based on the type of woodland, i.e.
 # whether the change in coniferous or deciduous trees have been different!!
 
-# DATA EXTRACTION: Woodland Area on PUBLIC land ...
+# DATA EXTRACTION: Woodland Tree Types on PUBLIC land ...
 
 public_trees<-data.frame(
   tree_type=c(rep("FE conifers, England",27),rep("FE broadleaves, England",27),rep("NRW conifers, Wales",27),rep("NRW broadleaves, Wales",27),
@@ -22,7 +22,7 @@ public_trees$tree_type<-factor(public_trees$tree_type, levels=c("FE conifers, En
 
 mapping<-aes(x=year,y=woodland,colour=tree_type) # creates the mapping for the visualisations
 
-## BASIC INTERACTIVE PLOT:
+## BASIC INTERACTIVE PLOT 1:
 
 # Creates a plot mapping the amount of public woodland area development from 1998-2024, as divisable by country and classification of tree-type
 
@@ -60,20 +60,13 @@ InteractivePlot_public<-ggplotly(InteractivePlot_public, tooltip="text",width=90
 
 InteractivePlot_public
 
-# saves
+# Saves visualisation as an interactive HTML
 
 filename<-paste("The Growth of Coniferous & Deciduous (Broadleaf) Public Woodland Area in the UK from 1998 to 2024.html",sep="")
 full_file_path<-file.path(fig_path,filename)
 saveWidget(InteractivePlot_public, file=full_file_path)
 
-
-
-
-
-
-
-
-# PRIVATE DATA
+# DATA EXTRACTION: Woodland Tree Types on PRIVATE land ...
 
 private_trees<-data.frame(
   tree_type=c(rep("Private sector conifers, England",27),rep("Private sector broadleaves, England",27),rep("Private sector conifers, Wales",27),rep("Private sector broadleaves, Wales",27),
@@ -82,16 +75,15 @@ private_trees<-data.frame(
              processed_extracted_data$`Private sector conifers (thousand ha).1`,processed_extracted_data$`Private sector broadleaves (thousand ha).1`,
              processed_extracted_data$`Private sector conifers (thousand ha).2`,processed_extracted_data$`Private sector broadleaves (thousand ha).2`,
              processed_extracted_data$`Private sector conifers (thousand ha).3`,processed_extracted_data$`Private sector broadleaves (thousand ha).3`),
-  year=c(woodland_by_year$year_ending_March_31st)) # creates a dataframe amenable to the upcoming visualisation
+  year=c(`year_ending_March_31st`)) # creates a dataframe amenable to the upcoming visualisation
 
-private_trees$year<-as.numeric(private_trees$year) # ensures is numeric so it can be amenable to analysis*
-private_trees$woodland<-as.numeric(private_trees$woodland) # *
+str(private_trees) # all variables are the correct type, however ...
 private_trees$tree_type<-factor(private_trees$tree_type, levels=c("Private sector conifers, England", "Private sector broadleaves, England", 
                                                                   "Private sector conifers, Wales", "Private sector broadleaves, Wales",
                                                                   "Private sector conifers, Scotland", "Private sector broadleaves, Scotland",
-                                                                  "Private sector conifers, NI", "Private sector broadleaves, NI"))
+                                                                  "Private sector conifers, NI", "Private sector broadleaves, NI")) # facilitates consistent legend order
 
-## BASIC INTERACTIVE PLOT:
+## BASIC INTERACTIVE PLOT 2:
 
 InteractivePlot_private<-private_trees %>%
   ggplot(mapping=mapping)+
@@ -116,23 +108,43 @@ InteractivePlot_private<-private_trees %>%
         plot.title=element_text(face="bold"),
         text=element_text(family="sans"))
 
-# makes interactive
+# As proper preparations and modifications have already been made, the plot can now instantly be made interactive
 
 InteractivePlot_private<-ggplotly(InteractivePlot_private, tooltip="text",width=900,height=600) %>%
-  layout(
-    margin = list(t = 50, r = 50, b = 50, l = 50)
-  )
+  layout(margin = list(t = 50, r = 50, b = 50, l = 50))
+
+## Visualisation of the Growth of Coniferous and Deciduous Private Woodland Area within the United Kingdom, from 1998 to 2024
 
 InteractivePlot_private
 
-# saves
+# Saves visualisation as an interactive HTML
 
-fig_path<-here("figs") # creates the necessary path for saving the figure
 filename<-paste("The Growth of Coniferous & Deciduous (Broadleaf) Private Woodland Area in the UK from 1998 to 2024.html",sep="")
 full_file_path<-file.path(fig_path,filename)
 saveWidget(InteractivePlot_private, file=full_file_path)
 
+# Generally, these visualisations tend to indicate that private woodland area has grown at a much more visually noticeable rate than public woodland, even
+# after accounting for the differences in initial proportions by creating graphs with relative scales. This could be curious for motivating investigations
+# into WHY this is happening (i.e. privatisation of forested areas for production purposes, higher funding for development, etc.) or even whether this 
+# difference is statistically significantly different in the first place. Regardless, it was entertaining to play around with the data to show this.
 
+# And just as a final tidbit, there is a simple barplot below which shows all of the data which combines the private and public woodland statistics to show
+# a more general trend on the total amount of woodland area as denoted by whether it was coniferous or deciduous, per country, per year from 1998-2024.
 
+# DATA MANIPULATION: Woodland Tree Types on both PUBLIC and PRIVATE land ...
 
-# you need to make both graph plots on the same html scale so that they can be portrayed side by side and not be misleading :)
+total_trees<-cbind(public_trees,private_trees) # combines all data into one dataframe
+names(total_trees)<-make.names(names(total_trees), unique=TRUE) # renders names unique to allow renaming
+total_trees<-total_trees%>% 
+  rename(private_woodland=`woodland.1`,public_woodland=woodland)%>% # renames variables to facilitate interaction
+  mutate(sources=paste(tree_type,`tree_type.1`, sep=" + "))%>% # creates variable to record source of woodland area
+  select(-c(1,4,6))%>% # removes now unneccessary variables from the dataframe
+  select(c("sources", "year", "public_woodland", "private_woodland")) # reorders dataframe to improve readability
+total_trees$total_woodland<-rowSums(total_trees[, c("public_woodland","private_woodland")], na.rm=TRUE) # calculates total woodland areas
+
+head(total_trees) # have a look! :)
+
+# Trend in RECORDED woodland area (i.e. as 1998-2004 NI woodland area was not documented) in the United Kingdom from 1998-2024.
+
+p<-ggplot(total_trees, aes(x=year,y=total_woodland,fill=sources))+geom_bar(position="stack",stat="identity")
+p
