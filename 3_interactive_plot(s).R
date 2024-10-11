@@ -24,7 +24,7 @@ mapping<-aes(x=year,y=woodland,colour=tree_type) # creates the mapping for the v
 
 ## BASIC INTERACTIVE PLOT 1:
 
-# Creates a plot mapping the amount of public woodland area development from 1998-2024, as divisable by country and classification of tree-type
+# Generates an interactive scattergraph of documented PUBLIC coniferious and deciduous woodland area within the United Kingdom from 1998-2024
 
 InteractivePlot_public<-public_trees %>%
   ggplot(mapping=mapping)+
@@ -60,7 +60,7 @@ InteractivePlot_public<-ggplotly(InteractivePlot_public, tooltip="text",width=90
 
 InteractivePlot_public
 
-# Saves visualisation as an interactive HTML
+# SAVES HTML:
 
 filename<-paste("The Growth of Coniferous & Deciduous (Broadleaf) Public Woodland Area in the UK from 1998 to 2024.html",sep="")
 full_file_path<-file.path(fig_path,filename)
@@ -85,6 +85,8 @@ private_trees$tree_type<-factor(private_trees$tree_type, levels=c("Private secto
 
 ## BASIC INTERACTIVE PLOT 2:
 
+# Generates an interactive scattergraph of documented PRIVATE coniferious and deciduous woodland area within the United Kingdom from 1998-2024
+
 InteractivePlot_private<-private_trees %>%
   ggplot(mapping=mapping)+
   geom_point(aes(text = paste("Woodland Area:", woodland, "(K ha)",
@@ -108,8 +110,6 @@ InteractivePlot_private<-private_trees %>%
         plot.title=element_text(face="bold"),
         text=element_text(family="sans"))
 
-# As proper preparations and modifications have already been made, the plot can now instantly be made interactive
-
 InteractivePlot_private<-ggplotly(InteractivePlot_private, tooltip="text",width=900,height=600) %>%
   layout(margin = list(t = 50, r = 50, b = 50, l = 50))
 
@@ -117,7 +117,7 @@ InteractivePlot_private<-ggplotly(InteractivePlot_private, tooltip="text",width=
 
 InteractivePlot_private
 
-# Saves visualisation as an interactive HTML
+# SAVES HTML:
 
 filename<-paste("The Growth of Coniferous & Deciduous (Broadleaf) Private Woodland Area in the UK from 1998 to 2024.html",sep="")
 full_file_path<-file.path(fig_path,filename)
@@ -129,7 +129,10 @@ saveWidget(InteractivePlot_private, file=full_file_path)
 # into WHY this is happening (i.e. privatisation of forested areas for production purposes, higher funding for development, etc.) or even whether this 
 # difference is statistically significantly different in the first place. Regardless, it was entertaining to play around with the data to show this.
 
-# And just as a final tidbit, there is a simple barplot below which shows all of the data which combines the private and public woodland statistics to show
+# Furthermore, althought I am aware this code could have been looped to generate both visualisations in a more streamlined fashion (due to their repeated
+# themes and structure), I felt this would compromise the more exploratory and narrative manner in which this data is being analysed.
+
+# And just as a final tidbit, there is an interactive barplot below showing all of the used data, combining private and public woodland statistics to show
 # a more general trend on the total amount of woodland area as denoted by whether it was coniferous or deciduous, per country, per year from 1998-2024.
 
 
@@ -153,9 +156,11 @@ visual_theme<-hc_theme( # creates an aesthetically similar "woodland"-esque them
   title=list(style=list(fontWeight="bold",fontSize="20px")),
   yAxis=list(gridLineColor="#8B7355"))
 
-# Trend in RECORDED woodland area (i.e. as 1998-2004 NI woodland area was not documented) in the United Kingdom from 1998-2024.
+# BASIC INTERACTIVE PLOT 3:
 
-amalgamated_visualisation<-total_trees %>%
+# Generates an interactive stacked barplot using the 'highcharter' rather than 'plotly' package, showing totals of coniferious and deciduous woodland area within the United Kingdom from 1998-2024
+
+amalgamated_visualisation<-total_trees %>% 
   hchart('column', hcaes(x=year,y=total_woodland,group=sources),stacking="normal")%>%
   hc_title(text="Recorded Total Woodland Area of the United Kingdom from 1998-2024")%>%
   hc_subtitle(text="Segmented by tree type (coniferous or deciduous) and country")%>%
@@ -167,7 +172,11 @@ amalgamated_visualisation<-total_trees %>%
                                                                    list(xAxis = 0, yAxis = 0, x = 2004.5, y = 3500)),
                                        stroke="black",strokeWidth=1)),draggable=""))
 
+# Trend in RECORDED woodland area (i.e. as 1998-2004 NI woodland area was not documented) in the United Kingdom from 1998-2024.
+
 amalgamated_visualisation
 
 # NOTE: this visualisation in particular is HUGE (1.3MB+), so is wisest to not be saved within the directory :) This rightfully reflects how more complex visualisations are not
 # necessarily always the best choice! Sometimes, simple interactive plots - or static plots - can be just as effective without compromising upload ability or causing memory issues.
+
+#
