@@ -161,6 +161,4 @@ amalgamated_visualisation<-total_trees %>%
 
 amalgamated_visualisation
 
-filename<-paste("Recorded Total Woodland Area of the United Kingdom from 1998-2024.html",sep="")
-full_file_path<-file.path(fig_path,filename)
-saveWidget(amalgamated_visualisation, file=full_file_path)
+# NOTE: this visualisation in particular is HUGE (1.3MB+), so is wisest to not be saved within the directory :)
