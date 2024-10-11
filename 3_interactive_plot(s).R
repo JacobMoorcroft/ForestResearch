@@ -146,6 +146,13 @@ total_trees$total_woodland<-rowSums(total_trees[, c("public_woodland","private_w
 
 head(total_trees) # have a look! :)
 
+visual_theme<-hc_theme( # creates an aesthetically similar "woodland"-esque theme to the prior visualisations
+  colors=c("#FF0000","darkred","#00CD00","darkgreen","#0000CD","darkblue","#FFA900","darkorange"),
+  chart=list(plotBackgroundColor="beige",
+             style=list(fontFamily="Helvetica Neue", fontSize="15px")),
+  title=list(style=list(fontWeight="bold",fontSize="20px")),
+  yAxis=list(gridLineColor="#8B7355"))
+
 # Trend in RECORDED woodland area (i.e. as 1998-2004 NI woodland area was not documented) in the United Kingdom from 1998-2024.
 
 amalgamated_visualisation<-total_trees %>%
@@ -154,6 +161,7 @@ amalgamated_visualisation<-total_trees %>%
   hc_subtitle(text="Segmented by tree type (coniferous or deciduous) and country")%>%
   hc_xAxis(title=list(text="Year (commencing from March 31st)"))%>%
   hc_yAxis(title=list(text="Woodland area (in thousand hectares)"))%>%
+  hc_add_theme(visual_theme)%>%
   hc_caption(text="Northern Ireland only began documenting woodland area as of 2005: see abline")%>%
   hc_annotations(list(shapes=list(list(type = 'path',points = list(list(xAxis = 0, yAxis = 0, x = 2004.5, y = 0),
                                                                    list(xAxis = 0, yAxis = 0, x = 2004.5, y = 3500)),
@@ -161,4 +169,5 @@ amalgamated_visualisation<-total_trees %>%
 
 amalgamated_visualisation
 
-# NOTE: this visualisation in particular is HUGE (1.3MB+), so is wisest to not be saved within the directory :)
+# NOTE: this visualisation in particular is HUGE (1.3MB+), so is wisest to not be saved within the directory :) This rightfully reflects how more complex visualisations are not
+# necessarily always the best choice! Sometimes, simple interactive plots - or static plots - can be just as effective without compromising upload ability or causing memory issues.
