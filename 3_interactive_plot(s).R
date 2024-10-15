@@ -179,4 +179,4 @@ amalgamated_visualisation
 # NOTE: this visualisation in particular is HUGE (1.3MB+), so is wisest to not be saved within the directory :) This rightfully reflects how more complex visualisations are not
 # necessarily always the best choice! Sometimes, simple interactive plots - or static plots - can be just as effective without compromising upload ability or causing memory issues.
 
-#
+rm(list=ls()) #grenade
