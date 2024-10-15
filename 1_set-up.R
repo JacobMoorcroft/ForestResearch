@@ -29,7 +29,7 @@ rm(list=setdiff(ls(), c("raw_extracted_data", "country_names"))) # removes now u
 
 # Glimpse of the raw data
 
-raw_extracted_data
+head(raw_extracted_data)
 
 # Processing and cleaning of data
 
