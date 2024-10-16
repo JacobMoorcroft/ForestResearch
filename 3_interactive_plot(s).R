@@ -42,18 +42,18 @@ InteractivePlot_public<-public_trees %>%
   scale_shape_manual(values=c(0,15,1,16,2,17,5,18))+
   scale_x_continuous(breaks=seq(1998,2024,4))+
   scale_y_continuous(breaks=seq(0,1000,50))+
-  theme(panel.border=element_rect(colour="darkgreen",fill=NA,linewidth=2),
-        panel.grid.major=element_line(colour="lightgreen",linewidth=0.7),
-        axis.line=element_line(linewidth=2,colour="darkgreen"),
-        panel.background=element_rect(fill="white"),
-        plot.title=element_text(face="bold"),
-        text=element_text(family="sans"))
+  theme(panel.border=element_rect(colour="#8B7355",fill=NA,linewidth=2),
+        panel.grid.major=element_line(colour="beige",linewidth=0.7),
+        axis.line=element_line(linewidth=2,colour="#8B7355"),
+        panel.background=element_rect(fill="beige"),
+        plot.title=element_text(face="italic"),
+        text=element_text(family="sans",size=14))
 
 # Unfortunately, the logo cannot be added to an interactive plot as this feature has not yet been implemented into plotly
 
 # As proper preparations and modifications have already been made, the plot can now instantly be made interactive
 
-InteractivePlot_public<-ggplotly(InteractivePlot_public, tooltip="text",width=900,height=600) %>%
+InteractivePlot_public<-ggplotly(InteractivePlot_public, tooltip="text",width=1200,height=600) %>%
   layout(margin = list(t = 50, r = 50, b = 50, l = 50))
 
 ## Visualisation of the Growth of Coniferous and Deciduous Public Woodland Area within the United Kingdom, from 1998 to 2024
@@ -103,14 +103,14 @@ InteractivePlot_private<-private_trees %>%
   scale_shape_manual(values=c(0,15,1,16,2,17,5,18))+
   scale_x_continuous(breaks=seq(1998,2024,4))+
   scale_y_continuous(breaks=seq(0,1000,100))+
-  theme(panel.border=element_rect(colour="darkgreen",fill=NA,linewidth=2),
-        panel.grid.major=element_line(colour="lightgreen",linewidth=0.7),
-        axis.line=element_line(linewidth=2,colour="darkgreen"),
-        panel.background=element_rect(fill="white"),
-        plot.title=element_text(face="bold"),
-        text=element_text(family="sans"))
+  theme(panel.border=element_rect(colour="#8B7355",fill=NA,linewidth=2),
+        panel.grid.major=element_line(colour="beige",linewidth=0.7),
+        axis.line=element_line(linewidth=2,colour="#8B7355"),
+        panel.background=element_rect(fill="beige"),
+        plot.title=element_text(face="italic"),
+        text=element_text(family="sans",size=14))
 
-InteractivePlot_private<-ggplotly(InteractivePlot_private, tooltip="text",width=900,height=600) %>%
+InteractivePlot_private<-ggplotly(InteractivePlot_private, tooltip="text",width=1200,height=600) %>%
   layout(margin = list(t = 50, r = 50, b = 50, l = 50))
 
 ## Visualisation of the Growth of Coniferous and Deciduous Private Woodland Area within the United Kingdom, from 1998 to 2024
