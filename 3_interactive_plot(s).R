@@ -31,7 +31,7 @@ InteractivePlot_public<-public_trees %>%
   geom_point(aes(text = paste("Woodland Area:", woodland, "(K ha)",
                                "<br>Year:", year, "<br>Type & Region:", tree_type), shape=tree_type))+
   labs(title="The Growth of Coniferous and Deciduous (Broadleaf) Public Woodland Area in the United Kingdom",
-       x="Year (commencing from March 31st)",
+       x="Year (ending March 31st)",
        y="Woodland area (in thousand hectares)",
        colour="Woodland Type and Region",
        shape=NULL)+
@@ -92,7 +92,7 @@ InteractivePlot_private<-private_trees %>%
   geom_point(aes(text = paste("Woodland Area:", woodland, "(K ha)",
                               "<br>Year:", year, "<br>Type & Region:", tree_type), shape=tree_type))+
   labs(title="The Growth of Coniferous and Deciduous (Broadleaf) Private Woodland Area in the United Kingdom",
-       x="Year (commencing from March 31st)",
+       x="Year (ending March 31st)",
        y="Woodland area (in thousand hectares)",
        colour="Woodland Type and Region",
        shape=NULL)+
@@ -122,7 +122,6 @@ InteractivePlot_private
 filename<-paste("The Growth of Coniferous & Deciduous (Broadleaf) Private Woodland Area in the UK from 1998 to 2024.html",sep="")
 full_file_path<-file.path(fig_path,filename)
 saveWidget(InteractivePlot_private, file=full_file_path)
-
 
 # Generally, these visualisations tend to indicate that private woodland area has grown at a much more visually noticeable rate than public woodland, even
 # after accounting for the differences in initial proportions by creating graphs with relative scales. This could be curious for motivating investigations
@@ -164,7 +163,7 @@ amalgamated_visualisation<-total_trees %>%
   hchart('column', hcaes(x=year,y=total_woodland,group=sources),stacking="normal")%>%
   hc_title(text="Recorded Total Woodland Area of the United Kingdom from 1998-2024")%>%
   hc_subtitle(text="Segmented by tree type (coniferous or deciduous) and country")%>%
-  hc_xAxis(title=list(text="Year (commencing from March 31st)"))%>%
+  hc_xAxis(title=list(text="Year (ending March 31st)"))%>%
   hc_yAxis(title=list(text="Woodland area (in thousand hectares)"))%>%
   hc_add_theme(visual_theme)%>%
   hc_caption(text="Northern Ireland only began documenting woodland area as of 2005: see abline")%>%

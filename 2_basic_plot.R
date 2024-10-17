@@ -62,7 +62,7 @@ mapping<-aes(x=year,y=woodland,colour=country) # creates the mapping for the vis
 BasicPlot<-woodland_growth_over_time %>%
   ggplot(mapping=mapping)+
   geom_smooth(method="gam")+
-  labs(x="Year (commencing from March 31st)",
+  labs(x="Year (ending March 31st)",
        y="Woodland area (in thousand hectares)",
        colour="Country",
        title="The Growth of Total Woodland Area within the United Kingdom",
