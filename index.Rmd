@@ -193,7 +193,7 @@ BasicPlot
 
 ```
 
-<br><br>
+<br>
 
   While this plot was initially taken from my first ever Data Science Project completed during my Master's studies, the following two interactive figures (created using *Plotly*) are a more recent attempt at configuring and advancing upon my previous abilities with data management and visualisation. Also, now that we've already gone through the process of showing a general composition of woodland development from 1998-2024, it could be curious to investigate more nuanced and dissectable patterns in the data relevant to *land ownership* and *tree type*.
 
