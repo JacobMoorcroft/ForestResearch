@@ -1,21 +1,14 @@
 ---
 title: "Data Management and Visualisation Project: `Forest Research`"
 output:
-  html_document:
-    theme: flatly 
+  rmdformats::readthedown:
     df_print: paged
     fig_width: 7
     fig_height: 6.37
     fig_caption: true
-    toc: true
     toc_depth: 3
     toc_float: true
     code_folding: hide
-  pdf_document:
-    df_print: default
-    fig_width: 7
-    fig_height: 6.37
-    fig_caption: true
 ---
 
 ```{r setup, include=FALSE}
