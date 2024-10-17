@@ -2,6 +2,7 @@
 title: "Data Management and Visualisation Project: `Forest Research`"
 output:
   html_document:
+    theme: flatly 
     df_print: paged
     fig_width: 7
     fig_height: 6.37
@@ -26,15 +27,15 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### Data Source<br>
 
-This project is focused on visualising various changes in woodland within the United Kingdom between March 31st of 1998 and 2024 respectively. The raw data and logo for this project were retrieved from ['Forest Research'](https://www.forestresearch.gov.uk/tools-and-resources/statistics/data-downloads/), a branch of the Forestry Commission (FC) which collects data by totaling extractions made from multiple forest services operating within the United Kingdom. It principally gathers information on tree-related statistics, including but not limited to gathering longitudinal provisional data on the estimated amount of woodland area in the UK.<br>
+  This project is focused on visualising various changes in woodland within the United Kingdom between March 31st of 1998 and 2024 respectively. The raw data and logo for this project were retrieved from ['Forest Research'](https://www.forestresearch.gov.uk/tools-and-resources/statistics/data-downloads/), a branch of the Forestry Commission (FC) which collects data by totaling extractions made from multiple forest services operating within the United Kingdom. It principally gathers information on tree-related statistics, including but not limited to gathering longitudinal provisional data on the estimated amount of woodland area in the UK.<br>
 
-Alongside data on privately owned woodland, provisional estimates have been retrieved from land within the public sector - including *Forest England* (FE), *Forest and Land Scotland* (FLS), *Natural Resources Wales* (NRW) and *Forest Service* (FS) (for Northern Ireland).<br>
+  Alongside data on privately owned woodland, provisional estimates have been retrieved from land within the public sector - including *Forest England* (FE), *Forest and Land Scotland* (FLS), *Natural Resources Wales* (NRW) and *Forest Service* (FS) (for Northern Ireland).<br>
 
-The “Woodland area, UK, 1998 to 2024” ODS file contains 5 sheets of actual data, though was supplemented with cover, content and notes pages. In tandem, the pages containing data were annotated with further notes clarifying the origin of the data and different commissions involved in gathering it. The pages containing data split woodland area based on whether it was coniferous or deciduous, private or public sector, and also summated total estimated woodland per country and in the United Kingdom as a whole.<br><br>
+  The “Woodland area, UK, 1998 to 2024” ODS file contains 5 sheets of actual data, though was supplemented with cover, content and notes pages. In tandem, the pages containing data were annotated with further notes clarifying the origin of the data and different commissions involved in gathering it. The pages containing data split woodland area based on whether it was coniferous or deciduous, private or public sector, and also summated total estimated woodland per country and in the United Kingdom as a whole.<br><br>
 
 ### Full Data Reference
 
-Forest Research (2024, March 31). *Tools and Resources: Data Downloads*. https://www.forestresearch.gov.uk/tools-and-resources/statistics/data-downloads/
+  Forest Research (2024, March 31). *Tools and Resources: Data Downloads*. https://www.forestresearch.gov.uk/tools-and-resources/statistics/data-downloads/
 
 ```{r, message=FALSE, warning=FALSE, echo=TRUE}
 
@@ -95,21 +96,21 @@ head(processed_extracted_data)
 
 ```
 
-Full annotated scripts describing the step-by-step processing of the raw data are available within the appropriately named *Forest Research* repository on GitHub: https://github.com/JacobMoorcroft/ForestResearch
+  Full annotated scripts describing the step-by-step processing of the raw data are available within the appropriately named *Forest Research* repository on GitHub: https://github.com/JacobMoorcroft/ForestResearch
 
 <br><br>
 
 ### The Research Question(s)
 
-The main rationale for exploring this data was to elucidate whether and where there has been growth in woodland area across the United Kingdom from 1998 to 2024. This included creating a static visualisation of absolute numeric woodland amounts, annotated with the rate (*percentage increase*) of development from 1998-2024, as well as more advanced interactive visualisations which showed specific patterns subject to being *coniferous* or *deciduous*, and *public* or *private* sector woodland.
+  The main rationale for exploring this data was to elucidate whether and where there has been growth in woodland area across the United Kingdom from 1998 to 2024. This included creating a static visualisation of absolute numeric woodland amounts, annotated with the rate (*percentage increase*) of development from 1998-2024, as well as more advanced interactive visualisations which showed specific patterns subject to being *coniferous* or *deciduous*, and *public* or *private* sector woodland.
 
-For the below plot, calculating the *percentage increase* was important to contextualise the proportional rate of growth for each country, beyond simply interpreting development based on raw numeric increase in hectares of woodland. Following this up with interactive visualisations allowed more precise dissemination of whether patterns of development were distinct depending on *tree type* (i.e. *coniferous* or *deciduous*) and *woodland ownership* (i.e. *public* or *private* sector).
+  For the below plot, calculating the *percentage increase* was important to contextualise the proportional rate of growth for each country, beyond simply interpreting development based on raw numeric increase in hectares of woodland. Following this up with interactive visualisations allowed more precise dissemination of whether patterns of development were distinct depending on *tree type* (i.e. *coniferous* or *deciduous*) and *woodland ownership* (i.e. *public* or *private* sector).
 
 <br><br>
 
 ### **Static Plot** (using *ggplot2*)
 
-The below plot shows with visual clarity that the growth of woodland area within the United Kingdom can be interpreted very differently based on using *absolute numeric increase* or *proportional rates of change*. From this, reporting either of these measures outside of the context of the other could be misleading - *i.e.* interpreting that England or Scotland have made superior woodland development efforts compared to Northern Ireland, in the context that they have gained considerably higher amounts of woodland region, neglects how Northern Ireland has shown considerably greater proportional growth through percentage increase in native woodland from 1998-2024. Regardless, the data and accompanying visual can simply be interpreted on the promising notion that all countries within the United Kingdom have shown woodland growth between 1998 and 2024.
+  The below plot shows with visual clarity that the growth of woodland area within the United Kingdom can be interpreted very differently based on using *absolute numeric increase* or *proportional rates of change*. From this, reporting either of these measures outside of the context of the other could be misleading - *i.e.* interpreting that England or Scotland have made superior woodland development efforts compared to Northern Ireland, in the context that they have gained considerably higher amounts of woodland region, neglects how Northern Ireland has shown considerably greater proportional growth through percentage increase in native woodland from 1998-2024. Regardless, the data and accompanying visual can simply be interpreted on the promising notion that all countries within the United Kingdom have shown woodland growth between 1998 and 2024.
 
 ```{r, message=FALSE, warning=FALSE, echo=TRUE}
 # Mutual code for all visualisations
@@ -199,13 +200,13 @@ BasicPlot
 
 <br><br>
 
-While this plot was initially taken from my first ever Data Science Project completed during my Master's studies, the following two interactive figures (created using *Plotly*) are a more recent attempt at configuring and advancing upon my previous abilities with data management and visualisation. Also, now that we've already gone through the process of showing a general composition of woodland development from 1998-2024, it could be curious to investigate more nuanced and dissectable patterns in the data relevant to *land ownership* and *tree type*.
+  While this plot was initially taken from my first ever Data Science Project completed during my Master's studies, the following two interactive figures (created using *Plotly*) are a more recent attempt at configuring and advancing upon my previous abilities with data management and visualisation. Also, now that we've already gone through the process of showing a general composition of woodland development from 1998-2024, it could be curious to investigate more nuanced and dissectable patterns in the data relevant to *land ownership* and *tree type*.
 
 <br><br>
 
 ### **Interactive Plot**(s) (using *plotly*){.tabset}
 
-**Generally**, the below scatterplots indicate that private woodland area has developed at a much more visually noticeable rate than public woodland, even after accounting for the differences in initial proportions by creating graphs with relative scales. Further exploration into why this has happened (*i.e.* privatisation of forested areas for production purposes, higher funding for development, sawmill locations, etc.) could be interesting should this want to be approached in a more nuanced way than just a visualisation project. Regardless, it was entertaining to play around with the data to show this.
+  **Generally**, the below scatterplots indicate that private woodland area has developed at a much more visually noticeable rate than public woodland, even after accounting for the differences in initial proportions by creating graphs with relative scales. Further exploration into why this has happened (*i.e.* privatisation of forested areas for production purposes, higher funding for development, sawmill locations, etc.) could be interesting should this want to be approached in a more nuanced way than just a visualisation project. Regardless, it was entertaining to play around with the data to show this.
 
 #### Public Sector Woodland
 
@@ -327,7 +328,7 @@ InteractivePlot_private
 
 ### **Interactive Plot** (using *highcharter*)
 
-As a final tidbit, below I have created a simple interactive barplot (using *highcharter*) which summates all of the recorded private and public woodland statistics to show a more general trend in coniferous and deciduous woodland within the United Kingdom from 1998-2024. This could also be interpreted as a more visually advanced version of our original static plot, despite it actually being much simpler to create!
+  As a final tidbit, below I have created a simple interactive barplot (using *highcharter*) which summates all of the recorded private and public woodland statistics to show a more general trend in coniferous and deciduous woodland within the United Kingdom from 1998-2024. This could also be interpreted as a more visually advanced version of our original static plot, despite it actually being much simpler to create!
 
 ```{r, message=FALSE, warning=FALSE, echo=TRUE}
 
@@ -374,8 +375,8 @@ amalgamated_visualisation
 
 ### *Notes*
 
-As an ode to further exploration, it must again be clarified that this project has been purely for the purpose of data visualisation - **not** analysis. Thusly, no definitive conclusions can be made about whether any of the visual idiosyncrasies occuring across the figures hold any inherent value to forming conclusions about woodland development. *However*, though they cannot determine *what* or *how* a significant change in woodland may occur, they are exceptionally useful for investigating *where* these differences may exist.
+  As an ode to further exploration, it must again be clarified that this project has been purely for the purpose of data visualisation - **not** analysis. Thusly, no definitive conclusions can be made about whether any of the visual idiosyncrasies occuring across the figures hold any inherent value to forming conclusions about woodland development. *However*, though they cannot determine *what* or *how* a significant change in woodland may occur, they are exceptionally useful for investigating *where* these differences may exist.
 
-In tandem, further visualisation opportunities lie in compiling data available within the other [ODS files](https://www.forestresearch.gov.uk/tools-and-resources/statistics/data-downloads/) available from the fascias of the Forestry Commission - *i.e.* such as how the amount of sawmills and wood production has changed from 1998-2024 - to investigate questions such as whether the rate of woodland development is sustainable to the rate of wood production by sawmills in the United Kingdom. 
+  In tandem, further visualisation opportunities lie in compiling data available within the other [ODS files](https://www.forestresearch.gov.uk/tools-and-resources/statistics/data-downloads/) available from the fascias of the Forestry Commission - *i.e.* such as how the amount of sawmills and wood production has changed from 1998-2024 - to investigate questions such as whether the rate of woodland development is sustainable to the rate of wood production by sawmills in the United Kingdom. 
 
-Beyond the constraints of the available data, taking into account the actual geographic size of each country could also be highly insightful for *mapping* observed changes in relation to total land available, and the percentage of each country's landmass which is recorded as woodland area.
+  Beyond the constraints of the available data, taking into account the actual geographic size of each country could also be highly insightful for *mapping* observed changes in relation to total land available, and the percentage of each country's landmass which is recorded as woodland area.
