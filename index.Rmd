@@ -32,6 +32,10 @@ knitr::opts_chunk$set(echo = TRUE)
 
   Forest Research (2024, March 31). *Tools and Resources: Data Downloads*. https://www.forestresearch.gov.uk/tools-and-resources/statistics/data-downloads/
 
+<br>
+
+### Glimpse of the Raw Data ...<br>
+
 ```{r, message=FALSE, warning=FALSE, echo=TRUE}
 
 ## Should the below list of packages need to be installed, remove '#'(s) and run:
@@ -62,16 +66,12 @@ for (i in seq_along(country_names)){
 raw_extracted_data<-data.frame(countries_list) # which is then put into a dataframe
 ```
 
-<br>
-
-### Glimpse of the Raw Data ...<br>
-
 ```{r, message=FALSE, warning=FALSE, echo=FALSE}
 # Glimpse of the raw data
 head(raw_extracted_data)
 ```
 
-### After being Processed ...<br>
+### Processed Data ...<br>
 
 ```{r, message=FALSE, warning=FALSE, echo=TRUE}
 # Processing and cleaning of data
@@ -91,7 +91,7 @@ head(processed_extracted_data)
 
 ```
 
-  Full annotated scripts describing the step-by-step processing of the raw data are available within the appropriately named *Forest Research* repository on GitHub: https://github.com/JacobMoorcroft/ForestResearch
+  Full annotated scripts describing the step-by-step processing of the raw data are available within the appropriately named **Forest Research** repository on GitHub: https://github.com/JacobMoorcroft/ForestResearch
 
 <br><br>
 
@@ -203,7 +203,7 @@ BasicPlot
 
   **Generally**, the below scatterplots indicate that private woodland area has developed at a much more visually noticeable rate than public woodland, even after accounting for the differences in initial proportions by creating graphs with relative scales. Further exploration into why this has happened (*i.e.* privatisation of forested areas for production purposes, higher funding for development, sawmill locations, etc.) could be interesting should this want to be approached in a more nuanced way than just a visualisation project. Regardless, it was entertaining to play around with the data to show this.
 
-#### Public Sector Woodland
+#### *Public Sector Woodland*
 
 ```{r, message=FALSE, warning=FALSE, echo=TRUE}
 # DATA EXTRACTION: Woodland Tree Types on PUBLIC land ...
@@ -265,7 +265,7 @@ InteractivePlot_public
 
 <br><br>
 
-#### Private Sector Woodland
+#### *Private Sector Woodland*
 
 ```{r, message=FALSE, warning=FALSE, echo=TRUE}
 # DATA EXTRACTION: Woodland Tree Types on PRIVATE land ...
