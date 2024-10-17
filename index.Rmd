@@ -155,7 +155,7 @@ mapping<-aes(x=year,y=woodland,colour=country) # creates the mapping for the vis
 BasicPlot<-woodland_growth_over_time %>%
   ggplot(mapping=mapping)+
   geom_smooth(method="gam")+
-  labs(x="Year (commencing from March 31st)",
+  labs(x="Year (ending March 31st)",
        y="Woodland area (in thousand hectares)",
        colour="Country",
        title="The Growth of Total Woodland Area within the United Kingdom",
@@ -233,7 +233,7 @@ InteractivePlot_public<-public_trees %>%
   geom_point(aes(text = paste("Woodland Area:", woodland, "(K ha)",
                                "<br>Year:", year, "<br>Type & Region:", tree_type), shape=tree_type))+
   labs(title="The Growth of Coniferous and Deciduous (Broadleaf) Public Woodland Area in the United Kingdom",
-       x="Year (commencing from March 31st)",
+       x="Year (ending March 31st)",
        y="Woodland area (in thousand hectares)",
        colour="Woodland Type and Region",
        shape=NULL)+
@@ -293,7 +293,7 @@ InteractivePlot_private<-private_trees %>%
   geom_point(aes(text = paste("Woodland Area:", woodland, "(K ha)",
                               "<br>Year:", year, "<br>Type & Region:", tree_type), shape=tree_type))+
   labs(title="The Growth of Coniferous and Deciduous (Broadleaf) Private Woodland Area in the United Kingdom",
-       x="Year (commencing from March 31st)",
+       x="Year (ending March 31st)",
        y="Woodland area (in thousand hectares)",
        colour="Woodland Type and Region",
        shape=NULL)+
@@ -353,7 +353,7 @@ amalgamated_visualisation<-total_trees %>%
   hchart('column', hcaes(x=year,y=total_woodland,group=sources),stacking="normal")%>%
   hc_title(text="Total Woodland Area of the United Kingdom from 1998-2024")%>%
   hc_subtitle(text="Segmented by tree type (coniferous or deciduous) and country")%>%
-  hc_xAxis(title=list(text="Year (commencing from March 31st)"))%>%
+  hc_xAxis(title=list(text="Year (ending March 31st)"))%>%
   hc_yAxis(title=list(text="Woodland area (in thousand hectares)"))%>%
   hc_add_theme(visual_theme)%>%
   hc_caption(text="Northern Ireland only began documenting woodland area as of 2005: see abline")%>%
