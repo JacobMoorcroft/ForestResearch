@@ -161,12 +161,12 @@ visual_theme<-hc_theme( # creates an aesthetically similar "woodland"-esque them
 
 amalgamated_visualisation<-total_trees %>% 
   hchart('column', hcaes(x=year,y=total_woodland,group=sources),stacking="normal")%>%
-  hc_title(text="Recorded Total Woodland Area of the United Kingdom from 1998-2024")%>%
+  hc_title(text="Recorded Specific Woodland Area of the United Kingdom from 1998-2024")%>%
   hc_subtitle(text="Segmented by tree type (coniferous or deciduous) and country")%>%
   hc_xAxis(title=list(text="Year (ending March 31st)"))%>%
   hc_yAxis(title=list(text="Woodland area (in thousand hectares)"))%>%
   hc_add_theme(visual_theme)%>%
-  hc_caption(text="Northern Ireland only began documenting woodland area as of 2005: see abline")%>%
+  hc_caption(text="Northern Ireland only began documenting woodland area types as of 2005: see abline")%>%
   hc_annotations(list(shapes=list(list(type = 'path',points = list(list(xAxis = 0, yAxis = 0, x = 2004.5, y = 0),
                                                                    list(xAxis = 0, yAxis = 0, x = 2004.5, y = 3500)),
                                        stroke="black",strokeWidth=1)),draggable=""))
