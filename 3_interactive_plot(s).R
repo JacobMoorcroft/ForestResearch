@@ -30,7 +30,7 @@ InteractivePlot_public<-public_trees %>%
   ggplot(mapping=mapping)+
   geom_point(aes(text = paste("Woodland Area:", woodland, "(K ha)",
                                "<br>Year:", year, "<br>Type & Region:", tree_type), shape=tree_type))+
-  labs(title="The Growth of Coniferous and Deciduous (Broadleaf) Public Woodland Area in the United Kingdom",
+  labs(title="The Growth of Coniferous and Deciduous (Broadleaf) Public Woodland Area in the UK",
        x="Year (ending March 31st)",
        y="Woodland area (in thousand hectares)",
        colour="Woodland Type and Region",
@@ -91,7 +91,7 @@ InteractivePlot_private<-private_trees %>%
   ggplot(mapping=mapping)+
   geom_point(aes(text = paste("Woodland Area:", woodland, "(K ha)",
                               "<br>Year:", year, "<br>Type & Region:", tree_type), shape=tree_type))+
-  labs(title="The Growth of Coniferous and Deciduous (Broadleaf) Private Woodland Area in the United Kingdom",
+  labs(title="The Growth of Coniferous and Deciduous (Broadleaf) Private Woodland Area in the UK",
        x="Year (ending March 31st)",
        y="Woodland area (in thousand hectares)",
        colour="Woodland Type and Region",
@@ -161,7 +161,7 @@ visual_theme<-hc_theme( # creates an aesthetically similar "woodland"-esque them
 
 amalgamated_visualisation<-total_trees %>% 
   hchart('column', hcaes(x=year,y=total_woodland,group=sources),stacking="normal")%>%
-  hc_title(text="Recorded Specific Woodland Area of the United Kingdom from 1998-2024")%>%
+  hc_title(text="Documented Woodland Area of the UK from 1998-2024")%>%
   hc_subtitle(text="Segmented by tree type (coniferous or deciduous) and country")%>%
   hc_xAxis(title=list(text="Year (ending March 31st)"))%>%
   hc_yAxis(title=list(text="Woodland area (in thousand hectares)"))%>%
