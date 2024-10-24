@@ -168,7 +168,7 @@ amalgamated_visualisation<-total_trees %>%
   hc_add_theme(visual_theme)%>%
   hc_caption(text="Northern Ireland only began documenting woodland area types as of 2005: see abline")%>%
   hc_annotations(list(shapes=list(list(type = 'path',points = list(list(xAxis = 0, yAxis = 0, x = 2004.5, y = 0),
-                                                                   list(xAxis = 0, yAxis = 0, x = 2004.5, y = 3500)),
+                                                                   list(xAxis = 0, yAxis = 0, x = 2004.5, y = 4000)),
                                        stroke="black",strokeWidth=1)),draggable=""))
 
 # Trend in RECORDED woodland area (i.e. as 1998-2004 NI woodland area was not documented) in the United Kingdom from 1998-2024.
