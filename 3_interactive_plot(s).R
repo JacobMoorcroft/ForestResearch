@@ -30,7 +30,7 @@ InteractivePlot_public<-public_trees %>%
   ggplot(mapping=mapping)+
   geom_point(aes(text = paste("Woodland Area:", woodland, "(K ha)",
                                "<br>Year:", year, "<br>Type & Region:", tree_type), shape=tree_type))+
-  labs(title="The Growth of Coniferous and Deciduous (Broadleaf) Public Woodland Area in the UK",
+  labs(title="The Growth of Public Woodland Area in the United Kingdom from 1998 to 2024",
        x="Year (ending March 31st)",
        y="Woodland area (in thousand hectares)",
        colour="Woodland Type and Region",
@@ -40,14 +40,15 @@ InteractivePlot_public<-public_trees %>%
                                `FLS conifers, Scotland`="#0000CD",`FLS broadleaves, Scotland`="#0000CD",
                                `FS conifers, NI`="#FFA900",`FS broadleaves, NI`="#FFA900"))+
   scale_shape_manual(values=c(0,15,1,16,2,17,5,18))+
-  scale_x_continuous(breaks=seq(1998,2024,4))+
+  scale_x_continuous(breaks=seq(1998,2024,2))+
   scale_y_continuous(breaks=seq(0,1000,50))+
   theme(panel.border=element_rect(colour="#8B7355",fill=NA,linewidth=2),
-        panel.grid.major=element_line(colour="beige",linewidth=0.7),
-        axis.line=element_line(linewidth=2,colour="#8B7355"),
-        panel.background=element_rect(fill="beige"),
+        panel.grid.major.x=element_line(colour="#8B7355",linewidth=0.7),
+        panel.grid.major.y=element_line(colour="#CAFF70",linewidth=0.7),
+        axis.line=element_line(linewidth=4,colour="#CAFF70"),
+        panel.background=element_rect(fill="white"),
         plot.title=element_text(face="italic"),
-        text=element_text(family="sans",size=14))
+        text=element_text(family="sans",size=12))
 
 # Unfortunately, the logo cannot be added to an interactive plot as this feature has not yet been implemented into plotly
 
@@ -62,7 +63,7 @@ InteractivePlot_public
 
 # SAVES HTML:
 
-filename<-paste("The Growth of Coniferous & Deciduous (Broadleaf) Public Woodland Area in the UK from 1998 to 2024.html",sep="")
+filename<-paste("The Growth of Coniferous & Deciduous (Broadleaf) Public Woodland Area in the United Kingdom from 1998 to 2024.html",sep="")
 full_file_path<-file.path(fig_path,filename)
 saveWidget(InteractivePlot_public, file=full_file_path)
 
@@ -91,7 +92,7 @@ InteractivePlot_private<-private_trees %>%
   ggplot(mapping=mapping)+
   geom_point(aes(text = paste("Woodland Area:", woodland, "(K ha)",
                               "<br>Year:", year, "<br>Type & Region:", tree_type), shape=tree_type))+
-  labs(title="The Growth of Coniferous and Deciduous (Broadleaf) Private Woodland Area in the UK",
+  labs(title="The Growth of Private Woodland Area in the United Kingdom from 1998 to 2024",
        x="Year (ending March 31st)",
        y="Woodland area (in thousand hectares)",
        colour="Woodland Type and Region",
@@ -101,14 +102,15 @@ InteractivePlot_private<-private_trees %>%
                                `Private sector conifers, Scotland`="#0000CD",`Private sector broadleaves, Scotland`="#0000CD",
                                `Private sector conifers, NI`="#FFA900",`Private sector broadleaves, NI`="#FFA900"))+
   scale_shape_manual(values=c(0,15,1,16,2,17,5,18))+
-  scale_x_continuous(breaks=seq(1998,2024,4))+
+  scale_x_continuous(breaks=seq(1998,2024,2))+
   scale_y_continuous(breaks=seq(0,1000,100))+
   theme(panel.border=element_rect(colour="#8B7355",fill=NA,linewidth=2),
-        panel.grid.major=element_line(colour="beige",linewidth=0.7),
-        axis.line=element_line(linewidth=2,colour="#8B7355"),
-        panel.background=element_rect(fill="beige"),
+        panel.grid.major.x=element_line(colour="#8B7355",linewidth=0.7),
+        panel.grid.major.y=element_line(colour="#CAFF70",linewidth=0.7),
+        axis.line=element_line(linewidth=4,colour="#CAFF70"),
+        panel.background=element_rect(fill="white"),
         plot.title=element_text(face="italic"),
-        text=element_text(family="sans",size=14))
+        text=element_text(family="sans",size=12))
 
 InteractivePlot_private<-ggplotly(InteractivePlot_private, tooltip="text",width=1200,height=600) %>%
   layout(margin = list(t = 50, r = 50, b = 50, l = 50))
@@ -119,7 +121,7 @@ InteractivePlot_private
 
 # SAVES HTML:
 
-filename<-paste("The Growth of Coniferous & Deciduous (Broadleaf) Private Woodland Area in the UK from 1998 to 2024.html",sep="")
+filename<-paste("The Growth of Coniferous & Deciduous (Broadleaf) Private Woodland Area in the United Kingdom from 1998 to 2024.html",sep="")
 full_file_path<-file.path(fig_path,filename)
 saveWidget(InteractivePlot_private, file=full_file_path)
 
