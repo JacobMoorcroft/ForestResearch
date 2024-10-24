@@ -43,8 +43,8 @@ InteractivePlot_public<-public_trees %>%
   scale_x_continuous(breaks=seq(1998,2024,2))+
   scale_y_continuous(breaks=seq(0,1000,50))+
   theme(panel.border=element_rect(colour="#8B7355",fill=NA,linewidth=2),
-        panel.grid.major.x=element_line(colour="#8B7355",linewidth=0.7),
-        panel.grid.major.y=element_line(colour="#CAFF70",linewidth=0.7),
+        panel.grid.major.x=element_line(colour="#8B7355",linewidth=0.2),
+        panel.grid.major.y=element_line(colour="#CAFF70",linewidth=0.2),
         axis.line=element_line(linewidth=4,colour="#CAFF70"),
         panel.background=element_rect(fill="white"),
         plot.title=element_text(face="italic"),
@@ -105,8 +105,8 @@ InteractivePlot_private<-private_trees %>%
   scale_x_continuous(breaks=seq(1998,2024,2))+
   scale_y_continuous(breaks=seq(0,1000,100))+
   theme(panel.border=element_rect(colour="#8B7355",fill=NA,linewidth=2),
-        panel.grid.major.x=element_line(colour="#8B7355",linewidth=0.7),
-        panel.grid.major.y=element_line(colour="#CAFF70",linewidth=0.7),
+        panel.grid.major.x=element_line(colour="#8B7355",linewidth=0.2),
+        panel.grid.major.y=element_line(colour="#CAFF70",linewidth=0.2),
         axis.line=element_line(linewidth=4,colour="#CAFF70"),
         panel.background=element_rect(fill="white"),
         plot.title=element_text(face="italic"),
