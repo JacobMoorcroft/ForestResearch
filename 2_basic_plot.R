@@ -10,7 +10,8 @@
 ## the percentage increase for each country across this time period, then visualise the growth of woodland area in the UK from 1998-2024 both in terms of absolute value numeric, 
 ## and statistically proportional changes. This facilitates more appropriate comparisons of woodland development in the UK than simple change from absolute value amounts in 1998.
 
-# The first plot, aptly named 'Basic Plot', was created while at the University of Sheffield as part of initial novice attempts at writing code, examined during the PSY6422 Module.
+# The first plot, aptly named 'Basic Plot', was coded while at the University of Sheffield as part of novice attempts at data visualisation, examined during the PSY6422 Module.
+# Because of this, I have added the original version of the plot (to "/figs"), which spanned available data from 1998-2023 :) I may update this yearly to show changes!
 
 ## DATA EXTRACTION: 
 # Extraction of necessary variables from processed dataframe
