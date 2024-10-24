@@ -47,7 +47,7 @@ InteractivePlot_public<-public_trees %>%
         panel.grid.major.y=element_line(colour="#CAFF70",linewidth=0.2),
         axis.line=element_line(linewidth=4,colour="#CAFF70"),
         panel.background=element_rect(fill="white"),
-        plot.title=element_text(face="italic"),
+        plot.title=element_text(face="bold"),
         text=element_text(family="sans",size=12))
 
 # Unfortunately, the logo cannot be added to an interactive plot as this feature has not yet been implemented into plotly
@@ -109,7 +109,7 @@ InteractivePlot_private<-private_trees %>%
         panel.grid.major.y=element_line(colour="#CAFF70",linewidth=0.2),
         axis.line=element_line(linewidth=4,colour="#CAFF70"),
         panel.background=element_rect(fill="white"),
-        plot.title=element_text(face="italic"),
+        plot.title=element_text(face="bold"),
         text=element_text(family="sans",size=12))
 
 InteractivePlot_private<-ggplotly(InteractivePlot_private, tooltip="text",width=1200,height=600) %>%
