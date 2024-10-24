@@ -256,7 +256,7 @@ InteractivePlot_public<-public_trees %>%
 
 # As proper preparations and modifications have already been made, the plot can now instantly be made interactive
 
-InteractivePlot_public<-ggplotly(InteractivePlot_public, tooltip="text",width=800,height=600) %>%
+InteractivePlot_public<-ggplotly(InteractivePlot_public, tooltip="text",width=1000,height=600) %>%
   layout(margin = list(t = 50, r = 50, b = 50, l = 50))
 
 ## Visualisation of the Growth of Coniferous and Deciduous Public Woodland Area within the United Kingdom, from 1998 to 2024
@@ -313,7 +313,7 @@ InteractivePlot_private<-private_trees %>%
         plot.title=element_text(face="italic"),
         text=element_text(family="sans",size=12))
 
-InteractivePlot_private<-ggplotly(InteractivePlot_private, tooltip="text",width=800,height=600) %>%
+InteractivePlot_private<-ggplotly(InteractivePlot_private, tooltip="text",width=1000,height=600) %>%
   layout(margin = list(t = 50, r = 50, b = 50, l = 50))
 
 ## Visualisation of the Growth of Coniferous and Deciduous Private Woodland Area within the United Kingdom, from 1998 to 2024
