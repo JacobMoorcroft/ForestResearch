@@ -242,11 +242,11 @@ InteractivePlot_public<-public_trees %>%
                                `FLS conifers, Scotland`="#0000CD",`FLS broadleaves, Scotland`="#0000CD",
                                `FS conifers, NI`="#FFA900",`FS broadleaves, NI`="#FFA900"))+
   scale_shape_manual(values=c(0,15,1,16,2,17,5,18))+
-  scale_x_continuous(breaks=seq(1998,2024,3))+
+  scale_x_continuous(breaks=seq(1998,2024,2))+
   scale_y_continuous(breaks=seq(0,1000,50))+
   theme(panel.border=element_rect(colour="#8B7355",fill=NA,linewidth=2),
         axis.line=element_line(linewidth=4,colour="#CAFF70"),
-        panel.background=element_rect(fill="#CAFF70"),
+        panel.background=element_rect(fill="white"),
         plot.title=element_text(face="bold"),
         text=element_text(family="sans",size=12))
 
@@ -301,11 +301,11 @@ InteractivePlot_private<-private_trees %>%
                                `Private sector conifers, Scotland`="#0000CD",`Private sector broadleaves, Scotland`="#0000CD",
                                `Private sector conifers, NI`="#FFA900",`Private sector broadleaves, NI`="#FFA900"))+
   scale_shape_manual(values=c(0,15,1,16,2,17,5,18))+
-  scale_x_continuous(breaks=seq(1998,2024,3))+
+  scale_x_continuous(breaks=seq(1998,2024,2))+
   scale_y_continuous(breaks=seq(0,1000,100))+
   theme(panel.border=element_rect(colour="#8B7355",fill=NA,linewidth=2),
         axis.line=element_line(linewidth=4,colour="#CAFF70"),
-        panel.background=element_rect(fill="#CAFF70"),
+        panel.background=element_rect(fill="white"),
         plot.title=element_text(face="bold"),
         text=element_text(family="sans",size=12))
 
