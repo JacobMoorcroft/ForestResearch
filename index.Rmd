@@ -18,7 +18,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-```{r, message=FALSE, warning=FALSE, echo=FALSE, fig.align="center", out.width = "100%"}
+```{r, message=FALSE, warning=FALSE, echo=FALSE, fig.align="center", out.width = "75%"}
 library(magick)
 img <- image_read("imgs/depositphotos_73709031-stock-photo-sunlight-in-forest-with-trees.jpg")
 image_write(img, path = "imgs/depositphotos_73709031-stock-photo-sunlight-in-forest-with-trees.jpg", format = "jpeg")
@@ -164,6 +164,7 @@ mapping<-aes(x=year,y=woodland,colour=country) # creates the mapping for the vis
 BasicPlot<-woodland_growth_over_time %>%
   ggplot(mapping=mapping)+
   geom_smooth(method="gam")+
+  geom_point()+
   labs(x="Year (ending March 31st)",
        y="Woodland area (in thousand hectares)",
        colour="Country",
