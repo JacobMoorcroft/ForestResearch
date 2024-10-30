@@ -24,7 +24,6 @@ img <- image_read("imgs/depositphotos_73709031-stock-photo-sunlight-in-forest-wi
 image_write(img, path = "imgs/depositphotos_73709031-stock-photo-sunlight-in-forest-with-trees.jpg", format = "jpeg")
 knitr::include_graphics("imgs/depositphotos_73709031-stock-photo-sunlight-in-forest-with-trees.jpg")
 ```
-
 <br>
 
 ## *The Growth of Woodland Area within the United Kingdom (1998-2024)*<br>
