@@ -108,7 +108,7 @@ head(processed_extracted_data)
 
   To investigate the change in *Total Woodland Area* within the United Kingdom, the original project necessitated creating a static visualisation of absolute numeric woodland amounts, annotated with the rate (*percentage increase*) of development from 1998-2024. For the purpose of my project, I chose to emphasise that calculating the *percentage increase* was important to contextualise the proportional rate of growth for each country, beyond simply interpreting development based on raw numeric increase in hectares of woodland. 
   
-  Since this project, I have both refined and updated the static plot to incorporate current data (figure differences are viewable within the [repository](https://github.com/JacobMoorcroft/ForestResearch/tree/main/figs)), and created more advanced interactive visualisations which show specific patterns in woodland as denoted by more subtle patterns in specific types - i.e. whether land is *coniferous* or *deciduous*, and *public* or *private* sector woodland. These visualisations allowed more precise dissemination of whether patterns of development were distinct depending on *tree type* and *woodland ownership*.
+  Since the academic project, I have both refined and updated the static plot to incorporate current data (figure differences are viewable within the [repository](https://github.com/JacobMoorcroft/ForestResearch/tree/main/figs)), and created more advanced interactive visualisations which show specific patterns in woodland as denoted by more subtle patterns in specific types - i.e. whether land is *coniferous* or *deciduous*, and *public* or *private* sector woodland. These visualisations allowed more precise dissemination of whether patterns of development were distinct depending on *tree type* and *woodland ownership*.
 
 <br>
 
@@ -213,7 +213,21 @@ BasicPlot
 
 ### **Interactive Plot**(s) (using *plotly*){.tabset}
 
-  **Generally**, the below scatterplots indicate that private woodland area has developed at a much more visually noticeable rate than public woodland, even after accounting for the differences in initial proportions by creating graphs with relative scales. Further exploration into why this has happened (*i.e.* privatisation of forested areas for production purposes, higher funding for development, sawmill locations, etc.) could be interesting should this want to be approached in a more nuanced way than just a visualisation project. Regardless, it was entertaining to play around with the data to show this.
+As shown in the below mappings, created by the [Woodland Trust | State of the UK's Woods and Trees](https://www.woodlandtrust.org.uk/state-of-uk-woods-and-trees/) project in 2021 - there is a notable dissonance with the types of woodland spread across the United Kingdom. Notably, there is an evident disparity of more coniferous woodland within Scotland and Wales, and more broadleaf (deciduous) woodland within England and Northern Ireland.<br>
+
+![](imgs/woodlandtrust-stateofukwoodandtrees.png)
+<br>
+*Percentage of woodland cover per 10km (hexagon). Visualisation taken from State of the UK's Woods and Trees 2021.*
+<br>
+
+Furthermore, I was interested in how the *ownership* of woodland may factor in to changes within recorded hectares, in that the sale of 'amenity' woodland (woodland consisting of greater biodiversity and mixed trees) alone is a noticeable part of our national sales (please see [Spotlight: Amenity Woodland, 2021](https://www.savills.co.uk/research_articles/229130/320470-0)) - with the proportion of sales differing notably across countries and even specific regions within the United Kingdom.<br>
+
+![](imgs/40020486_1635249315891.png)
+<br>
+*Regional breakdown of marked Amenity Woodland as a percentage of National Sales. Visualisation taken from Savills 2021.*
+<br><br>
+
+  **Generally**, my scatterplots sought to further investigate these differences in woodland type and ownership across the United Kingdom. They indicated that private woodland area has developed at a much more visually noticeable rate than public woodland, even after accounting for the differences in initial proportions by creating graphs with relative scales. Further exploration into why this has happened (*i.e.* privatisation of forested areas for production purposes, higher funding for development, sawmill locations, etc.) could be interesting should this want to be approached in a more nuanced way than just a visualisation project. Regardless, it was entertaining to play around with the data to show this.
 
 #### *Public Sector Woodland*
 
