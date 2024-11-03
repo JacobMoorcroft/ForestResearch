@@ -213,7 +213,7 @@ BasicPlot
 
 ### **Interactive Plot**(s) (using *plotly*){.tabset}
 
-As shown in the below mappings, created by the [Woodland Trust | State of the UK's Woods and Trees](https://www.woodlandtrust.org.uk/state-of-uk-woods-and-trees/) project in 2021 - there is a notable dissonance with the types of woodland spread across the United Kingdom. Notably, there is an evident disparity of more coniferous woodland within Scotland and Wales, and more broadleaf (deciduous) woodland within England and Northern Ireland.<br><br>
+As shown in the below mappings, created by the [Woodland Trust | State of the UK's Woods and Trees](https://www.woodlandtrust.org.uk/state-of-uk-woods-and-trees/) project in 2021 - there is a notable dissonance with the *types of woodland* spread across the United Kingdom. Notably, there is an evident disparity of more coniferous woodland within Scotland, Northern Ireland and Wales, and more broadleaf (deciduous) woodland within England. More generally, deciduous woodland holds prevalence within the South of the UK, while coniferous woodland does so within the North.<br><br>
 
 ![](imgs/woodlandtrust-stateofukwoodandtrees.png){width=70%}
 <br><br>
@@ -222,7 +222,7 @@ As shown in the below mappings, created by the [Woodland Trust | State of the UK
 https://www.woodlandtrust.org.uk/state-of-uk-woods-and-trees/
 <br><br>
 
-Furthermore, I was interested in how the *ownership* of woodland may factor in to changes within recorded hectares, in that the sale of 'amenity' woodland (woodland consisting of greater biodiversity and mixed trees) alone is a noticeable part of our national sales (please see [Spotlight: Amenity Woodland, 2021](https://www.savills.co.uk/research_articles/229130/320470-0)) - with the proportion of sales differing notably across countries and even specific regions within the United Kingdom.<br><br>
+Furthermore, I was interested in how the *ownership of woodland* may factor in to changes within recorded hectares, in that the sale of 'amenity' woodland (woodland consisting of greater biodiversity and mixed trees) alone is a noticeable part of our national sales (please see [Spotlight: Amenity Woodland, 2021](https://www.savills.co.uk/research_articles/229130/320470-0)) - with the proportion of sales differing notably across countries and specific regions within the United Kingdom.<br><br>
 
 ![](imgs/40020486_1635249315891.png){width=50%}
 <br><br>
@@ -231,7 +231,7 @@ Furthermore, I was interested in how the *ownership* of woodland may factor in t
 https://www.savills.co.uk/research_articles/229130/320470-0
 <br><br>
 
-  **Generally**, my scatterplots sought to further investigate these differences in woodland type and ownership across the United Kingdom. They indicated that private woodland area has developed at a much more visually noticeable rate than public woodland, even after accounting for the differences in initial proportions by creating graphs with relative scales. Further exploration into why this has happened (*i.e.* privatisation of forested areas for production purposes, higher funding for development, sawmill locations, etc.) could be interesting should this want to be approached in a more nuanced way than just a visualisation project. Regardless, it was entertaining to play around with the data to show this.<br><br>
+  **Generally**, my scatterplots sought to further investigate these differences in woodland type and ownership across the United Kingdom. They indicated that private woodland area has developed at a much more visually noticeable rate than public woodland, even after accounting for the differences in initial proportions by creating graphs with relative scales. Further exploration into why this has happened (*i.e. privatisation of forested areas for production purposes, higher funding for development, sawmill locations*, etc.) could be interesting should this want to be approached in a more nuanced way than just a visualisation project. Regardless, it was entertaining to play around with the data to show this.<br><br>
 
 #### *Public Sector Woodland*
 
@@ -393,7 +393,11 @@ amalgamated_visualisation<-total_trees %>%
 amalgamated_visualisation
 ```
 
-<br><br>
+<br>
+
+Thank-you for taking the time to have a gander into this small project demonstrating a few of my skills in data management, organisation and visualisation. :) Although this project did not afford me an opportunity to show my skills in data collection, preparation, or advanced analysis, please do know that these are actually my forte! I just didn't want to use this data to support any misconceptions of country's environmental efforts, which could be brought about by erroneously performing analyses without accounting for *country size*, *available arable land*, or the *process of privatisation* (see [Data Availability Statement](https://github.com/JacobMoorcroft/ForestResearch/blob/main/data_availability_statement.txt)). I intend to do projects which include analysis in the future, which will become available on my [GitHub](https://github.com/JacobMoorcroft) as I start to work on them.
+
+<br>
 
 ### *Notes*
 
