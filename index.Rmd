@@ -30,7 +30,13 @@ knitr::include_graphics("imgs/depositphotos_73709031-stock-photo-sunlight-in-for
 ```
 <br>
   
-  The niche nature of this project arose from my own curiosity surrounding the environmental efforts of the United Kingdom, especially regarding whether and where there has been any noticeable effort to cultivate and reforest arable woodland. Furthermore, it was initially an opportunity to attempt to create interesting visualisations using inherently uneventful information (and use simple data which was amenable to my lack of experience in R at the time!).<br><br>
+  The niche nature of this project arose from my own curiosity surrounding the environmental efforts of the United Kingdom, especially regarding whether and where there has been any noticeable effort to cultivate and reforest arable woodland. Furthermore, it was initially an opportunity to attempt to create interesting visualisations using inherently uneventful information (and use simple data which was amenable to my lack of experience in R at the time!).<br>
+  
+  In tandem, more in line with my personal ontological perspectives and my specialised interest in humanist psychology, I'm especially interested in how spending time in nature is vital for our health and wellbeing. It is no secret that dedicating time to being outdoors is a wholly revitalising experience for both the body and soul.<br>
+  
+  <span style="color:green;">**"I took a walk in the woods, and came out taller than the trees.**"</span>" - *Henry David Thoreau*
+  
+  To be truly grounded, finding space to breathe in a world where we are often hunched over an ever-demanding blue screen, has only become more valuable with the advent of digitalisation. I felt that this project was a somewhat ironic but insightful way to show that enjoying technology does not have to be in fundamental oppositon to enjoying nature.<br><br>
 
 ### Data Source
 
@@ -207,11 +213,11 @@ BasicPlot
 
 <br>
 
-  While this plot was conceptualised from my first ever Data Science Project, the following two interactive figures (created using *Plotly*) are a more recent attempt at configuring and advancing upon data management abilities. Also, now that we've already gone through the process of showing a general composition of woodland growth, it could be curious to investigate more nuanced and dissectable patterns in the data.
+  While this plot was conceptualised from my first ever Data Science Project, the following interactive figures were a more recent attempt at configuring and advancing upon data management abilities. Also, now that we've already gone through the process of showing a general composition of woodland growth, it could be curious to investigate more nuanced and dissectable patterns in the data.
 
 <br>
 
-### **Interactive Plot**(s) (using *plotly*){.tabset}
+### **Woodland Type & Ownership - Does It Matter?**
 
 As shown in the below mappings, created by the [Woodland Trust | State of the UK's Woods and Trees](https://www.woodlandtrust.org.uk/state-of-uk-woods-and-trees/) project in 2021 - there is a notable dissonance with the *types of woodland* spread across the United Kingdom. Notably, there is an evident disparity of more coniferous woodland within Scotland, Northern Ireland and Wales, and more broadleaf (deciduous) woodland within England. More generally, deciduous woodland holds prevalence within the South of the UK, while coniferous woodland does so within the North.<br><br>
 
@@ -229,9 +235,70 @@ Furthermore, I was interested in how the *ownership of woodland* may factor in t
 **Regional breakdown of marked Amenity Woodland as a percentage of National Sales.**<br> 
 *Visualisation taken from Savills 2021.*<br>
 https://www.savills.co.uk/research_articles/229130/320470-0
-<br><br>
+<br><br><br>
 
-  **Generally**, my scatterplots sought to further investigate these differences in woodland type and ownership across the United Kingdom. They indicated that private woodland area has developed at a much more visually noticeable rate than public woodland, even after accounting for the differences in initial proportions by creating graphs with relative scales. Further exploration into why this has happened (*i.e. privatisation of forested areas for production purposes, higher funding for development, sawmill locations*, etc.) could be interesting should this want to be approached in a more nuanced way than just a visualisation project. Regardless, it was entertaining to play around with the data to show this.<br><br>
+### **Interactive Plot**(s) (using *plotly*){.tabset}
+
+  **Generally**, my scatterplots sought to further investigate these differences in woodland type and ownership across the United Kingdom. They indicated that private woodland area has developed at visually noticeable rate while public woodland has either depreciated or stagnated, even after accounting for the differences in initial proportions by creating graphs with relative scales.<br>
+  
+  Further exploration into why this has happened (*i.e. privatisation of existing forested areas for wood production purposes, switching areas between growing coniferous or deciduous woodland, the increase in size of sawmills and their span of locations*, etc.) could be approached in a more nuanced way in a concurrent visualisation project. Regardless, it was entertaining to play around with the data to show this.<br><br>
+
+#### *Private Sector Woodland*
+
+```{r, message=FALSE, warning=FALSE, echo=TRUE}
+# DATA EXTRACTION: Woodland Tree Types on PRIVATE land ...
+
+private_trees<-data.frame(
+  tree_type=c(rep("Private sector conifers, England",27),rep("Private sector broadleaves, England",27),rep("Private sector conifers, Wales",27),rep("Private sector broadleaves, Wales",27),
+              rep("Private sector conifers, Scotland",27),rep("Private sector broadleaves, Scotland",27),rep("Private sector conifers, NI",27),rep("Private sector broadleaves, NI",27)),
+  woodland=c(processed_extracted_data$`Private sector conifers (thousand ha)`,processed_extracted_data$`Private sector broadleaves (thousand ha)`,
+             processed_extracted_data$`Private sector conifers (thousand ha).1`,processed_extracted_data$`Private sector broadleaves (thousand ha).1`,
+             processed_extracted_data$`Private sector conifers (thousand ha).2`,processed_extracted_data$`Private sector broadleaves (thousand ha).2`,
+             processed_extracted_data$`Private sector conifers (thousand ha).3`,processed_extracted_data$`Private sector broadleaves (thousand ha).3`),
+  year=c(`year_ending_March_31st`)) # creates a dataframe amenable to the upcoming visualisation
+
+private_trees$tree_type<-factor(private_trees$tree_type, levels=c("Private sector conifers, England", "Private sector broadleaves, England", 
+                                                                  "Private sector conifers, Wales", "Private sector broadleaves, Wales",
+                                                                  "Private sector conifers, Scotland", "Private sector broadleaves, Scotland",
+                                                                  "Private sector conifers, NI", "Private sector broadleaves, NI")) # facilitates consistent legend order
+
+mapping<-aes(x=year,y=woodland,colour=tree_type) # creates the mapping for the visualisations
+
+## BASIC INTERACTIVE PLOT 1:
+
+# Generates an interactive scattergraph of documented PRIVATE coniferious and deciduous woodland area within the United Kingdom from 1998-2024
+
+InteractivePlot_private<-private_trees %>%
+  ggplot(mapping=mapping)+
+  geom_point(aes(text = paste("Woodland Area:", woodland, "(K ha)",
+                              "<br>Year:", year, "<br>Type & Region:", tree_type), shape=tree_type))+
+  labs(title="The Growth of Private Woodland Area in the United Kingdom from 1998 to 2024",
+       x="Year (ending March 31st)",
+       y="Woodland area (in thousand hectares)",
+       colour="Woodland Type and Region",
+       shape=NULL)+
+  scale_colour_manual(values=c(`Private sector conifers, England`="#FF0000",`Private sector broadleaves, England`="#FF0000",
+                               `Private sector conifers, Wales`="#00CD00",`Private sector broadleaves, Wales`="#00CD00",
+                               `Private sector conifers, Scotland`="#0000CD",`Private sector broadleaves, Scotland`="#0000CD",
+                               `Private sector conifers, NI`="#FFA900",`Private sector broadleaves, NI`="#FFA900"))+
+  scale_shape_manual(values=c(0,15,1,16,2,17,5,18))+
+  scale_x_continuous(breaks=seq(1998,2024,2))+
+  scale_y_continuous(breaks=seq(0,1000,100))+
+  theme(panel.border=element_rect(colour="#8B7355",fill=NA,linewidth=2),
+        axis.line=element_line(linewidth=4,colour="#CAFF70"),
+        panel.background=element_rect(fill="white"),
+        plot.title=element_text(face="bold"),
+        text=element_text(family="sans",size=12))
+
+InteractivePlot_private<-ggplotly(InteractivePlot_private, tooltip="text",width=1000,height=600) %>%
+  layout(margin = list(t = 50, r = 50, b = 50, l = 50))
+
+## Visualisation of the Growth of Coniferous and Deciduous Private Woodland Area within the United Kingdom, from 1998 to 2024
+
+InteractivePlot_private
+```
+
+<br><br><br>
 
 #### *Public Sector Woodland*
 
@@ -252,9 +319,7 @@ public_trees$tree_type<-factor(public_trees$tree_type, levels=c("FE conifers, En
                                                                   "FLS conifers, Scotland", "FLS broadleaves, Scotland",
                                                                   "FS conifers, NI", "FS broadleaves, NI")) # this code facilitates consistent ordering of variables in visualisation legends
 
-mapping<-aes(x=year,y=woodland,colour=tree_type) # creates the mapping for the visualisations
-
-## BASIC INTERACTIVE PLOT 1:
+## BASIC INTERACTIVE PLOT 2:
 
 # Generates an interactive scattergraph of documented PUBLIC coniferious and deciduous woodland area within the United Kingdom from 1998-2024
 
@@ -294,64 +359,9 @@ InteractivePlot_public
 
 <br><br><br>
 
-#### *Private Sector Woodland*
-
-```{r, message=FALSE, warning=FALSE, echo=TRUE}
-# DATA EXTRACTION: Woodland Tree Types on PRIVATE land ...
-
-private_trees<-data.frame(
-  tree_type=c(rep("Private sector conifers, England",27),rep("Private sector broadleaves, England",27),rep("Private sector conifers, Wales",27),rep("Private sector broadleaves, Wales",27),
-              rep("Private sector conifers, Scotland",27),rep("Private sector broadleaves, Scotland",27),rep("Private sector conifers, NI",27),rep("Private sector broadleaves, NI",27)),
-  woodland=c(processed_extracted_data$`Private sector conifers (thousand ha)`,processed_extracted_data$`Private sector broadleaves (thousand ha)`,
-             processed_extracted_data$`Private sector conifers (thousand ha).1`,processed_extracted_data$`Private sector broadleaves (thousand ha).1`,
-             processed_extracted_data$`Private sector conifers (thousand ha).2`,processed_extracted_data$`Private sector broadleaves (thousand ha).2`,
-             processed_extracted_data$`Private sector conifers (thousand ha).3`,processed_extracted_data$`Private sector broadleaves (thousand ha).3`),
-  year=c(`year_ending_March_31st`)) # creates a dataframe amenable to the upcoming visualisation
-
-private_trees$tree_type<-factor(private_trees$tree_type, levels=c("Private sector conifers, England", "Private sector broadleaves, England", 
-                                                                  "Private sector conifers, Wales", "Private sector broadleaves, Wales",
-                                                                  "Private sector conifers, Scotland", "Private sector broadleaves, Scotland",
-                                                                  "Private sector conifers, NI", "Private sector broadleaves, NI")) # facilitates consistent legend order
-
-## BASIC INTERACTIVE PLOT 2:
-
-# Generates an interactive scattergraph of documented PRIVATE coniferious and deciduous woodland area within the United Kingdom from 1998-2024
-
-InteractivePlot_private<-private_trees %>%
-  ggplot(mapping=mapping)+
-  geom_point(aes(text = paste("Woodland Area:", woodland, "(K ha)",
-                              "<br>Year:", year, "<br>Type & Region:", tree_type), shape=tree_type))+
-  labs(title="The Growth of Private Woodland Area in the United Kingdom from 1998 to 2024",
-       x="Year (ending March 31st)",
-       y="Woodland area (in thousand hectares)",
-       colour="Woodland Type and Region",
-       shape=NULL)+
-  scale_colour_manual(values=c(`Private sector conifers, England`="#FF0000",`Private sector broadleaves, England`="#FF0000",
-                               `Private sector conifers, Wales`="#00CD00",`Private sector broadleaves, Wales`="#00CD00",
-                               `Private sector conifers, Scotland`="#0000CD",`Private sector broadleaves, Scotland`="#0000CD",
-                               `Private sector conifers, NI`="#FFA900",`Private sector broadleaves, NI`="#FFA900"))+
-  scale_shape_manual(values=c(0,15,1,16,2,17,5,18))+
-  scale_x_continuous(breaks=seq(1998,2024,2))+
-  scale_y_continuous(breaks=seq(0,1000,100))+
-  theme(panel.border=element_rect(colour="#8B7355",fill=NA,linewidth=2),
-        axis.line=element_line(linewidth=4,colour="#CAFF70"),
-        panel.background=element_rect(fill="white"),
-        plot.title=element_text(face="bold"),
-        text=element_text(family="sans",size=12))
-
-InteractivePlot_private<-ggplotly(InteractivePlot_private, tooltip="text",width=1000,height=600) %>%
-  layout(margin = list(t = 50, r = 50, b = 50, l = 50))
-
-## Visualisation of the Growth of Coniferous and Deciduous Private Woodland Area within the United Kingdom, from 1998 to 2024
-
-InteractivePlot_private
-```
-
-<br><br><br>
-
 ### **Interactive Plot** (using *highcharter*)
 
-  As a final tidbit, below I have created a simple interactive barplot (using *highcharter*) which summates all of the recorded private and public woodland statistics to show a more general trend in coniferous and deciduous woodland within the United Kingdom from 1998-2024. This could also be interpreted as a more visually advanced version of our original static plot, despite it actually being much simpler to create!
+  As a final tidbit exploring another package for easy interactive visualisation creation, below I have coded a very simple interactive barplot (using *highcharter*) which summates all of the recorded private and public woodland statistics to show a more general trend in coniferous and deciduous woodland within the United Kingdom from 1998-2024. The purpose of this plot could be interpreted as a more visually advanced version of our original static plot (despite it actually being much simpler to create!), as it allows a finer dissemination of exactly *where* and *when* there were changes in coniferous and deciduous woodland.
 
 ```{r, message=FALSE, warning=FALSE, echo=TRUE}
 # DATA MANIPULATION: Woodland Tree Types on both PUBLIC and PRIVATE land ...
@@ -393,9 +403,15 @@ amalgamated_visualisation<-total_trees %>%
 amalgamated_visualisation
 ```
 
-<br>
+<br><br>
 
-Thank-you for taking the time to have a gander into this small project demonstrating a few of my skills in data management, organisation and visualisation. :) Although this project did not afford me an opportunity to show my skills in data collection, preparation, or advanced analysis, please do know that these are actually my forte! I just didn't want to use this data to support any misconceptions of country's environmental efforts, which could be brought about by erroneously performing analyses without accounting for *country size*, *available arable land*, or the *process of privatisation* (see [Data Availability Statement](https://github.com/JacobMoorcroft/ForestResearch/blob/main/data_availability_statement.txt)). I intend to do projects which include analysis in the future, which will become available on my [GitHub](https://github.com/JacobMoorcroft) as I start to work on them.
+### **Thank-You!**
+
+Thank-you for taking the time to have a gander into this small project demonstrating a few of my skills in data management, organisation and visualisation! :)<br> 
+
+Although this project did not afford me an opportunity to show my skills in data collection, preparation, or advanced analysis, please do know that these are actually my forte! I just didn't want to use this data to support any misconceptions of country's environmental efforts, which could be brought about by erroneously performing analyses without accounting for *country size*, *available arable land*, or the *process of privatisation* (see [Data Availability Statement](https://github.com/JacobMoorcroft/ForestResearch/blob/main/data_availability_statement.txt)). In tandem, I didn't think that slapping your screen with a wall of analysis outcomes and summary tables would make for the most engaging read.<br>
+
+In the future, whenever I find free moments away from my current job, I intend to do projects which include analysis in the future, which will become available on my [GitHub](https://github.com/JacobMoorcroft) as I start to work on them.
 
 <br>
 
