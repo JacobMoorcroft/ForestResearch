@@ -19,7 +19,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## *The Growth of Woodland within the United Kingdom (1998-2024)*<br>
 
-  This project, initially conceptualised from an [Academic Submission](https://jacobmoorcroft.github.io/moorcroft_230170656/) made during my time at the University of Sheffield (2023-24), has since expanded into a personal coding and programming exercise - wherein I have chosen to explore more computationally advanced methods, unique packages, and figure types, all for the purpose of visualising changes in Woodland Area within the United Kingdom from 1998 to 2024.
+  This project, initially conceptualised from an [Academic Submission](https://jacobmoorcroft.github.io/moorcroft_230170656/) made during my time at the [University of Sheffield (2023-24)](https://tomstafford.github.io/psy6422/class-of-2024.html), has since expanded into a personal coding and programming exercise - wherein I have chosen to explore more computationally advanced methods, unique packages, and figure types, all for the purpose of visualising changes in Woodland Area within the United Kingdom from 1998 to 2024.
   
 <br>
 ```{r, message=FALSE, warning=FALSE, echo=FALSE, fig.align="center", out.width = "75%"}
@@ -34,7 +34,7 @@ knitr::include_graphics("imgs/depositphotos_73709031-stock-photo-sunlight-in-for
   
   In tandem, more in line with my personal ontological perspectives and my specialised interest in humanist psychology, I'm especially interested in how spending time in nature is vital for our health and wellbeing. It is no secret that dedicating time to being outdoors is a wholly revitalising experience for both the body and soul.<br>
   
-  <span style="color:green;">**"I took a walk in the woods, and came out taller than the trees.**"</span>" - *Henry David Thoreau*
+  <span style="color:green;">**"I took a walk in the woods, and came out taller than the trees.**"</span> - *Henry David Thoreau*
   
   To be truly grounded, finding space to breathe in a world where we are often hunched over an ever-demanding blue screen, has only become more valuable with the advent of digitalisation. I felt that this project was a somewhat ironic but insightful way to show that enjoying technology does not have to be in fundamental oppositon to enjoying nature.<br><br>
 
