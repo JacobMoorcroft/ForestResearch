@@ -19,7 +19,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## *The Growth of Woodland within the United Kingdom (1998-2024)*<br>
 
-  This project, initially conceptualised from an [Academic Submission](https://jacobmoorcroft.github.io/moorcroft_230170656/) made during my time at the [University of Sheffield (2023-24)](https://tomstafford.github.io/psy6422/class-of-2024.html), has since expanded into a personal coding and programming exercise - wherein I have chosen to explore more computationally advanced methods, unique packages, and figure types, all for the purpose of visualising changes in Woodland Area within the United Kingdom from 1998 to 2024.
+  This project, initially conceptualised from an [Academic Submission](https://jacobmoorcroft.github.io/moorcroft_230170656/) made during my time at the University of Sheffield (2023-24), has since expanded into a personal coding and programming exercise - wherein I have chosen to explore more computationally advanced methods, unique packages, and figure types, all for the purpose of visualising changes in Woodland Area within the United Kingdom from 1998 to 2024.
   
 <br>
 ```{r, message=FALSE, warning=FALSE, echo=FALSE, fig.align="center", out.width = "75%"}
@@ -213,7 +213,7 @@ BasicPlot
 
 <br>
 
-  While this plot was conceptualised from my first ever Data Science Project, the following interactive figures were a more recent attempt at configuring and advancing upon data management abilities. Also, now that we've already gone through the process of showing a general composition of woodland growth, it could be curious to investigate more nuanced and dissectable patterns in the data.
+  While this plot was conceptualised from my first ever Data Science Project, which is viewable within the [Class of 2024 Showcase](https://tomstafford.github.io/psy6422/class-of-2024.html), the following interactive figures were a more recent attempt at configuring and advancing upon my data management and visualisation abilities. Also, now that we've already gone through the process of showing a general composition of woodland growth, it could be curious to investigate more nuanced and dissectable patterns in the data.
 
 <br>
 
